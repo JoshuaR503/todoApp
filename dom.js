@@ -13,7 +13,7 @@ const addCard = (data) => {
     // Add content
     element.innerHTML = `
     <button class="delete"></button>
-    <p class="title is-4">${data}</p>
+    <p class="title is-4">${data.title}</p>
     <p>Almost before we knew it, we had left the ground.</p>`;
 
     // Append to DOM.
