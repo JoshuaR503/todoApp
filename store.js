@@ -24,7 +24,7 @@ const getData = () => {
 }
 
 // Guardar información en Local Storage.
-const agregarData = (todo) => {
+const addData = (todo) => {
 
     // Obtener todas las tareas ya existentes.
     const todos = getData();
@@ -36,34 +36,14 @@ const agregarData = (todo) => {
     saveData(todos, 'Added');
 }
 
-// Actualizar información de un elemento y guardarlo en Local Storage.
-const actualizarData = (id, updatedTodo) => {
-
-    // Obtener todas las tareas ya existentes.
-    const todos = getData();
-
-    // Encontrar elemento y modificarlo.
-    todos.forEach((todo) => {
-
-        // Verificar que el id del todo sea el mismo que el del elemento.
-        if (todo.id === id) {
-            todo = updatedTodo
-        }
-    });
-
-    // Guardar en Local Storage.
-    saveData(todos, 'Updated');
-}
-
 // Eliminar elemento de Local Storage.
-const eliminarData = () => {
+const deleteData = () => {
 
     // Obtener todas las tareas ya existentes.
     const todos = getData();
 
     // Encontrar todo y modificarlo.
     todos.forEach((todo, index) => {
-
         // Verificar que el id del todo sea el mismo que el del elemento.
         if (todo.id === id) {
             todos.splice(index, 1);
