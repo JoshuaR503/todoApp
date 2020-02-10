@@ -1,25 +1,3 @@
-// Create a tile and added to DOM.
-const addBox = (data) => {
-
-    // Select element from DOM.
-    const tasks = document.querySelector('#tasks');
-
-    // Create element 
-    const element = document.createElement('div');
-
-    // Add classes
-    element.classList.add('tile', 'is-child', 'notification', 'is-danger', 'box');
-
-    // Add content
-    element.innerHTML = `
-    <button class="delete"></button>
-    <p class="title is-4">${data}</p>
-    <p>Almost before we knew it, we had left the ground.</p>`;
-
-    // Append to DOM.
-    tasks.appendChild(element);
-}
-
 // Add task to DOM.
 const addTask = (event) => {
 
@@ -32,6 +10,26 @@ const addTask = (event) => {
     // Grab data.
     const task = input.value;
 
+    // Remove empty screen if there is any.
+    removeElementById('emptyState');
+
     // Add to DOM.
-    addBox(task);
-}
+    addCard(task);
+};
+
+
+// Sreen state handler.
+const initApp = (() => {
+
+    // Get todos.
+    const todos = getData();
+
+    // Decide view.
+    if (todos.length === 0) {
+        emptyScreenState("You don't have any tasks");
+    } else if (todos.length > 0) {
+        todos.forEach((todo) => addCard(todo));
+    } else {
+        emptyScreenState("There was an unknown error");
+    }
+})();
